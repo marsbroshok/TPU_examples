@@ -38,7 +38,7 @@ For more information, an extensive guide can be found [here](https://cloud.googl
 gcloud compute tpus tpu-vm create tpu-name \
   --zone=zone \
   --accelerator-type=2-8 \
-  --version=tpu-vm-pt-1.11
+  --version=tpu-vm-pt-1.13
 ```
 
 To see a list of versions (such as TensorFlow, other PyTorch versions), replace with zone with the zone of yoru project (eg us-central1-b) and run:
