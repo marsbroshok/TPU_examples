@@ -1,5 +1,5 @@
-# TPU Examples (Work in progress)
-Example notebooks for machine learning on TPUs
+# PyTorch on TPU Examples
+Example notebooks for machine learning on TPUs using PyTorch.
 
 Why use TPUs?
 
@@ -18,9 +18,9 @@ Prerequisite: a Google Cloud project.
 
 There are several ways to run the commands below. 
 
-*Vertex AI: If you're running notebooks from within Vertex Workbench, simply open a terminal within the notebook instance and run the commands.  
-* Local: [Download](https://cloud.google.com/sdk/docs/install) the gcloud SDK, or open a shell from within Cloud console.
-* Compute Engine VM: run the commands to set up a TPU VM.
+* **Vertex AI**: If you're running notebooks from within Vertex Workbench, simply open a terminal within the notebook instance and run the commands.  
+* **Local**: [Download](https://cloud.google.com/sdk/docs/install) the gcloud SDK, or open a shell from within Cloud console.
+* **Compute Engine VM**: run the commands to set up a TPU VM.
 
 Setting up the VM
 First, run the following command to enable the TPU API, and set your user and project configuration:
@@ -56,6 +56,7 @@ For the notebooks in this repository, we used a v2-8 TPU.
 From one of the options above (Workbench, local terminal, Compute Engine VM etc), adjust the VM name and zone placeholders:
 
 ```
+gcloud compute firewall-rules create default-allow-ssh --allow tcp:22
 gcloud compute tpus tpu-vm ssh <your-tpu-vm-name> --zone <your-zone>
 ```
 
@@ -85,7 +86,11 @@ tensor([[-0.2121,  1.5589, -0.6951],
 
 ### Notebooks
 
-(With thanks to Meta for the colabs [here](https://github.com/pytorch/xla/tree/master/contrib/colab), a mix of which I refactored for these examples).
+The notebooks in this repo are a mix of refactored notebooks from different repos:
+* Meta's PyTorch XLA repo: https://github.com/pytorch/xla/tree/master/contrib/colab
+* Philipp Schmid's repo for the HugginFace example: https://github.com/philschmid/deep-learning-pytorch-huggingface/tree/main/training 
+* Robin Stringer's repo I initially forked: https://github.com/rastringer/TPU_examples
 
-Now we're ready to run some notebooks. Learn how the basics of the pytorch_xla library while training a model on a single TPU core in [pytorch_resnet_singlecore.ipynb](https://github.com/rastringer/TPU_examples/blob/main/pytorch_mnist_singlecore.ipynb).
-Move on to writing a multi-core training job in [pytorch_resnet_multicore.ipynb](https://github.com/rastringer/TPU_examples/blob/main/pytorch_mnist_multicorecore.ipynb).
+Huge thank-you to these authors!
+
+You can run this notebooks in the sequntial order, the notebooks #00, #01, #02 and #03 are made to be run in the Cloud TPU Node architecture. The notebook #04 should be run inside the Cloud TPU VM architecture.
